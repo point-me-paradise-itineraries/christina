@@ -4450,6 +4450,11 @@ body{
         "icon": "flight",
         "name": "UA 253",
         "meta": "Jul 18 · 10:10 AM departure"
+      },
+      {
+        "icon": "tour",
+        "name": "test tour",
+        "meta": "Jul 15 · 10:00 AM"
       }
     ],
     "flights": [
@@ -4460,7 +4465,13 @@ body{
       }
     ],
     "hotels": [],
-    "tours": [],
+    "tours": [
+      {
+        "icon": "tour",
+        "name": "test tour",
+        "meta": "Jul 15 · 10:00 AM"
+      }
+    ],
     "car": []
   },
   "glance": [
@@ -4470,6 +4481,13 @@ body{
       "val": "UA 253",
       "screen": "docs",
       "sub": "flights"
+    },
+    {
+      "ico": "experiences",
+      "lbl": "Experiences",
+      "val": "test tour",
+      "screen": "docs",
+      "sub": "tours"
     },
     {
       "ico": "contacts",
@@ -4614,9 +4632,9 @@ body{
           "buttons": [],
           "links": [
             {
-              "label": "View flights",
+              "sub": "flights",
               "kind": "doc",
-              "sub": "flights"
+              "label": "View flights"
             }
           ]
         }
@@ -5730,5 +5748,5 @@ calcCurrency('usd');
 
 
 </script>
-<!--PMTP_STATE:eyJ2IjoxLCJmaWVsZHMiOnsiY2xpZW50IjoiQWxleGFuZGVyIiwiZGVzdCI6Ik1hdWkiLCJzdGFydCI6IjIwMjYtMDctMTIiLCJlbmQiOiIyMDI2LTA3LTIyIiwidHoiOiJQYWNpZmljL0hvbm9sdWx1fC0xMDowMCIsImhlcm8iOiIiLCJob21lY2l0eSI6IiIsImRlc3RjaXR5IjoiIiwiaW50bCI6ZmFsc2UsImFuYW1lIjoiQ2hyaXN0aW5hIEdhcmNpYSIsImFwaG9uZSI6IisxMjgxMjI5MDg2MiIsImFlbWFpbCI6ImNocmlzdGluYUBwb2ludG1ldG9wYXJhZGlzZS5jb20iLCJhaSI6IiIsImdtb2RlIjoic2luZ2xlIiwiZ2Rlc3QiOiIiLCJ0b3BpY21vZGUiOiJtYXBzIiwic2x1ZyI6ImFsZXhhbmRlciJ9LCJmbGlnaHRzIjpbeyJmbHQiOiJVQSAyNTMiLCJkYXRlIjoiMjAyNi0wNy0xOCIsInRpbWUiOiIxMDoxMCIsImJhZGdlIjoiT3V0Ym91bmQiLCJtc2ciOiIiLCJ0cmFjayI6IiJ9XSwiaG90ZWxzIjpbeyJuYW1lIjoiIiwicGhvbmUiOiIiLCJhZGRyIjoiIiwiY2hlY2tpbiI6IiIsImNoZWNrb3V0IjoiIiwicm9vbSI6IiIsImNvbmYiOiIiLCJwcmljZSI6IiIsIndlYiI6IiIsInJlc29ydGNrIjpmYWxzZSwicmVzb3J0YW10IjoiIiwic2VsZmNrIjpmYWxzZSwic2VsZmFtdCI6IiIsInZhbGV0Y2siOmZhbHNlLCJ2YWxldGFtdCI6IiJ9XSwiY2FycyI6W10sInRvdXJzIjpbXSwiZGF5cyI6W3siZGF0ZSI6IjIwMjYtMDctMTIiLCJsYWJlbCI6IkFycml2YWwiLCJhbGVydCI6IiIsImFjdHMiOltdfSx7ImRhdGUiOiIyMDI2LTA3LTEzIiwibGFiZWwiOiIiLCJhbGVydCI6IiIsImFjdHMiOltdfSx7ImRhdGUiOiIyMDI2LTA3LTE0IiwibGFiZWwiOiIiLCJhbGVydCI6IiIsImFjdHMiOltdfSx7ImRhdGUiOiIyMDI2LTA3LTE1IiwibGFiZWwiOiIiLCJhbGVydCI6IiIsImFjdHMiOltdfSx7ImRhdGUiOiIyMDI2LTA3LTE2IiwibGFiZWwiOiIiLCJhbGVydCI6IiIsImFjdHMiOltdfSx7ImRhdGUiOiIyMDI2LTA3LTE3IiwibGFiZWwiOiIiLCJhbGVydCI6IiIsImFjdHMiOltdfSx7ImRhdGUiOiIyMDI2LTA3LTE4IiwibGFiZWwiOiIiLCJhbGVydCI6IiIsImFjdHMiOlt7Imljb24iOiJmbGlnaHQiLCJ0aW1lIjoiIiwidGl0bGUiOiJVQSAyNTMiLCJkZXRhaWwiOiIiLCJsaW5rcyI6W3sibGFiZWwiOiJWaWV3IGZsaWdodHMiLCJraW5kIjoiZG9jIiwic3ViIjoiZmxpZ2h0cyJ9XSwiX2F1dG8iOnRydWV9XX0seyJkYXRlIjoiMjAyNi0wNy0xOSIsImxhYmVsIjoiIiwiYWxlcnQiOiIiLCJhY3RzIjpbXX0seyJkYXRlIjoiMjAyNi0wNy0yMCIsImxhYmVsIjoiIiwiYWxlcnQiOiIiLCJhY3RzIjpbXX0seyJkYXRlIjoiMjAyNi0wNy0yMSIsImxhYmVsIjoiIiwiYWxlcnQiOiIiLCJhY3RzIjpbXX0seyJkYXRlIjoiMjAyNi0wNy0yMiIsImxhYmVsIjoiRGVwYXJ0dXJlIiwiYWxlcnQiOiIiLCJhY3RzIjpbXX1dLCJndWlkZXMiOnsiYXJlYXMiOnt9LCJ0aGVybyI6e30sInRzcG90cyI6e30sInRvcGljcyI6W10sInJvd3MiOltdLCJjdXN0b20iOltdfX0=--></body>
+<!--PMTP_STATE:eyJ2IjoxLCJmaWVsZHMiOnsiY2xpZW50IjoiQWxleGFuZGVyIiwiZGVzdCI6Ik1hdWkiLCJzdGFydCI6IjIwMjYtMDctMTIiLCJlbmQiOiIyMDI2LTA3LTIyIiwidHoiOiJQYWNpZmljL0hvbm9sdWx1fC0xMDowMCIsImhlcm8iOiIiLCJob21lY2l0eSI6IiIsImRlc3RjaXR5IjoiIiwiaW50bCI6ZmFsc2UsImFuYW1lIjoiQ2hyaXN0aW5hIEdhcmNpYSIsImFwaG9uZSI6IisxMjgxMjI5MDg2MiIsImFlbWFpbCI6ImNocmlzdGluYUBwb2ludG1ldG9wYXJhZGlzZS5jb20iLCJhaSI6IiIsImdtb2RlIjoic2luZ2xlIiwiZ2Rlc3QiOiIiLCJ0b3BpY21vZGUiOiJtYXBzIiwic2x1ZyI6ImFsZXhhbmRlciJ9LCJmbGlnaHRzIjpbeyJmbHQiOiJVQSAyNTMiLCJkYXRlIjoiMjAyNi0wNy0xOCIsInRpbWUiOiIxMDoxMCIsImJhZGdlIjoiT3V0Ym91bmQiLCJtc2ciOiIiLCJ0cmFjayI6IiJ9XSwiaG90ZWxzIjpbeyJuYW1lIjoiIiwicGhvbmUiOiIiLCJhZGRyIjoiIiwiY2hlY2tpbiI6IiIsImNoZWNrb3V0IjoiIiwicm9vbSI6IiIsImNvbmYiOiIiLCJwcmljZSI6IiIsIndlYiI6IiIsInJlc29ydGNrIjpmYWxzZSwicmVzb3J0YW10IjoiIiwic2VsZmNrIjpmYWxzZSwic2VsZmFtdCI6IiIsInZhbGV0Y2siOmZhbHNlLCJ2YWxldGFtdCI6IiJ9XSwiY2FycyI6W10sInRvdXJzIjpbeyJuYW1lIjoidGVzdCB0b3VyIiwidHlwZSI6Imd1aWRlZCIsImRhdGUiOiIyMDI2LTA3LTE1IiwidGltZSI6IjEwOjAwIiwiZGV0YWlsIjoiIn1dLCJkYXlzIjpbeyJhY3RzIjpbXSwiZGF0ZSI6IjIwMjYtMDctMTIiLCJhbGVydCI6IiIsImxhYmVsIjoiQXJyaXZhbCJ9LHsiYWN0cyI6W10sImRhdGUiOiIyMDI2LTA3LTEzIiwiYWxlcnQiOiIiLCJsYWJlbCI6IiJ9LHsiYWN0cyI6W10sImRhdGUiOiIyMDI2LTA3LTE0IiwiYWxlcnQiOiIiLCJsYWJlbCI6IiJ9LHsiYWN0cyI6W10sImRhdGUiOiIyMDI2LTA3LTE1IiwiYWxlcnQiOiIiLCJsYWJlbCI6IiJ9LHsiYWN0cyI6W10sImRhdGUiOiIyMDI2LTA3LTE2IiwiYWxlcnQiOiIiLCJsYWJlbCI6IiJ9LHsiYWN0cyI6W10sImRhdGUiOiIyMDI2LTA3LTE3IiwiYWxlcnQiOiIiLCJsYWJlbCI6IiJ9LHsiYWN0cyI6W3siaWNvbiI6ImZsaWdodCIsInRpbWUiOiIiLCJfYXV0byI6dHJ1ZSwibGlua3MiOlt7InN1YiI6ImZsaWdodHMiLCJraW5kIjoiZG9jIiwibGFiZWwiOiJWaWV3IGZsaWdodHMifV0sInRpdGxlIjoiVUEgMjUzIiwiZGV0YWlsIjoiIn1dLCJkYXRlIjoiMjAyNi0wNy0xOCIsImFsZXJ0IjoiIiwibGFiZWwiOiIifSx7ImFjdHMiOltdLCJkYXRlIjoiMjAyNi0wNy0xOSIsImFsZXJ0IjoiIiwibGFiZWwiOiIifSx7ImFjdHMiOltdLCJkYXRlIjoiMjAyNi0wNy0yMCIsImFsZXJ0IjoiIiwibGFiZWwiOiIifSx7ImFjdHMiOltdLCJkYXRlIjoiMjAyNi0wNy0yMSIsImFsZXJ0IjoiIiwibGFiZWwiOiIifSx7ImFjdHMiOltdLCJkYXRlIjoiMjAyNi0wNy0yMiIsImFsZXJ0IjoiIiwibGFiZWwiOiJEZXBhcnR1cmUifV0sImd1aWRlcyI6eyJhcmVhcyI6e30sInRoZXJvIjp7fSwidHNwb3RzIjp7fSwidG9waWNzIjpbXSwicm93cyI6W10sImN1c3RvbSI6W119fQ==--></body>
 </html>
