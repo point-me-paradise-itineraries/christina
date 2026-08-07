@@ -5,9 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="Maui Trip">
+<meta name="apple-mobile-web-app-title" content="Philippines">
 <meta name="theme-color" content="#ffffff">
-<title>Maui, Hawaii · Point Me to Paradise</title>
+<title>Philippines · Point Me to Paradise</title>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Point Me to Paradise Travel">
+<meta property="og:title" content="Philippines — Greg Leffler">
+<meta property="og:description" content="Your Philippines travel itinerary — flights, hotels, your day-by-day plan, and local guides, all in one place.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Philippines — Greg Leffler">
+<meta name="twitter:description" content="Your Philippines travel itinerary — flights, hotels, your day-by-day plan, and local guides, all in one place.">
+<meta property="og:image" content="https://point-me-paradise-itineraries.github.io/christina/docs/cebu-city-philippines.webp">
+<meta name="twitter:image" content="https://point-me-paradise-itineraries.github.io/christina/docs/cebu-city-philippines.webp">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
@@ -9473,10 +9482,17 @@ function buildDataGuides(){
     {g:'Getting Oriented', keys:['neighborhoods','getting-around','day-trips']},
     {g:'Shopping & Practical', keys:['shopping','markets','photo-spots','seasons','safety','etiquette','money','practical']}
   ];
+  // Informational topics are advice/tips, not physical places — count them as
+  // "points" (Safety, Etiquette, Money & Tipping…), everything place-based as "spots".
+  var GX_INFO_TOPICS={safety:1,etiquette:1,money:1,practical:1,seasons:1,'getting-around':1,culture:1,'cultural-education':1};
+  function gxTopicCount(c,n){
+    var noun=GX_INFO_TOPICS[c]?'point':'spot';
+    return n+' '+noun+(n!==1?'s':'');
+  }
   var _topicCard=function(c){
     GUIDE_CATEGORY_MAP['cat-'+c]=c;
     var n=SPOTS.filter(function(s){return (s.categories||[]).indexOf(c)>=0;}).length;
-    return '<div class="glib-card" onclick="gxOpen(\'cat-'+gxJs(c)+'\')"><div class="glib-ico">'+GX_LIST+'</div><div class="glib-meta"><div class="glib-title">'+gxEsc(gxLabel(c))+'</div><div class="glib-sub">'+n+' spot'+(n!==1?'s':'')+'</div></div><div class="glib-chev">'+GX_CHEV+'</div></div>';
+    return '<div class="glib-card" onclick="gxOpen(\'cat-'+gxJs(c)+'\')"><div class="glib-ico">'+GX_LIST+'</div><div class="glib-meta"><div class="glib-title">'+gxEsc(gxLabel(c))+'</div><div class="glib-sub">'+gxTopicCount(c,n)+'</div></div><div class="glib-chev">'+GX_CHEV+'</div></div>';
   };
   var tc='', _placed={};
   GTG.forEach(function(grp){
