@@ -553,12 +553,28 @@ body{
 @keyframes slideUp{from{transform:translateY(100%);}to{transform:translateY(0);}}
 .install-sheet{
   background:var(--cream-pale);
-  width:100%;max-width:430px;
+  /* 100vw, not 100%, and centred by margin as well as by flex. On her iPhone
+     this sheet came up about half the screen wide and pinned to the left, which
+     squeezed every step's text into a column so narrow it broke one word per
+     line. Sizing against the viewport and centring two ways means neither a
+     wider layout viewport nor flex centring failing can produce that again. */
+  width:min(100vw, 430px);max-width:430px;
+  margin:0 auto;
   border-radius:20px 20px 0 0;
   padding:18px 18px 28px;
   max-height:85vh;overflow-y:auto;
   animation:slideUp .25s ease;
+  position:relative;              /* anchors the close button */
 }
+.install-sheet-close{
+  position:absolute;top:10px;right:10px;
+  width:34px;height:34px;border-radius:50%;
+  border:1px solid var(--rule);background:var(--white);
+  color:var(--ink-mid);font-size:19px;line-height:1;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;padding:0;z-index:2;
+}
+.install-sheet-close:active{background:var(--cream-pale);}
 .install-sheet-handle{
   width:36px;height:4px;background:var(--rule);
   border-radius:2px;margin:0 auto 14px;
@@ -596,6 +612,7 @@ body{
   display:flex;gap:12px;margin-bottom:14px;
   padding:12px 14px;background:var(--white);
   border:1px solid var(--rule);border-radius:12px;
+  align-items:flex-start;
 }
 .install-step-num{
   flex-shrink:0;width:26px;height:26px;border-radius:50%;
@@ -603,14 +620,20 @@ body{
   display:flex;align-items:center;justify-content:center;
   font-size:13px;font-weight:600;
 }
-.install-step-body{flex:1;}
+.install-step-body{flex:1;min-width:0;}
+/* FLOATED INSIDE THE TEXT, not a third column of its own. As a sibling column
+   it took 44px plus two gaps off every step before the words got any, which on
+   a narrow sheet left about 90px and six lines of one-word rows. Floated, the
+   text wraps around it and reclaims the full width underneath. */
 .install-step-icon{
-  flex-shrink:0;width:44px;height:44px;border-radius:10px;
+  float:left;width:38px;height:38px;border-radius:9px;
+  margin:1px 10px 4px 0;
   background:var(--teal-pale);border:1px solid var(--teal-light);
   display:flex;align-items:center;justify-content:center;
   color:var(--teal-deep);
 }
-.install-step-icon svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.install-step-body::after{content:'';display:block;clear:both;}
+.install-step-icon svg{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
 .install-step-text{
   font-size:14.5px;color:var(--ink);line-height:1.5;
 }
@@ -4620,6 +4643,7 @@ body{
 <!-- Install to Home Screen — Modal Overlay -->
 <div class="install-modal" id="installModal" onclick="installModalClose(event)">
   <div class="install-sheet" onclick="event.stopPropagation()">
+    <button class="install-sheet-close" aria-label="Close" onclick="installModalCloseForce()">&times;</button>
     <div class="install-sheet-handle"></div>
     <div class="install-sheet-title">Install to Home Screen</div>
     <div class="install-sheet-sub" id="installSheetSub">A one-tap shortcut, right on your phone</div>
@@ -5244,13 +5268,21 @@ function installShowBrowser(key){
       const s = (typeof step === 'string') ? {text: step} : step;
       html += '<div class="install-step">';
       html += '<div class="install-step-num">' + (i+1) + '<\/div>';
-      if(s.icon){
-        html += '<div class="install-step-icon">' + s.icon + '<\/div>';
-      }
-      html += '<div class="install-step-body"><div class="install-step-text">' + s.text + '<\/div><\/div>';
+      // The icon lives INSIDE the body and floats, so the words wrap around it
+      // instead of being squeezed into whatever column is left over.
+      html += '<div class="install-step-body">';
+      if(s.icon){ html += '<div class="install-step-icon">' + s.icon + '<\/div>'; }
+      html += '<div class="install-step-text">' + s.text + '<\/div><\/div>';
       html += '<\/div>';
     });
-    html += '<div class="install-done">Your Kauai Trip icon will appear on your home screen — tap it anytime, just like a real app.<\/div>';
+    /* Was hard-coded to "Your Kauai Trip icon" — a line from the trip this
+       template was first built for, shown to every client since. The hero
+       eyebrow is the destination; fall back to something that reads correctly
+       when there isn't one. */
+    var _dest = '';
+    try{ _dest = ((window.TD && window.TD.hero && window.TD.hero.eyebrow) || '').trim(); }catch(e){}
+    var _what = _dest ? ('Your ' + _dest + ' trip icon') : 'Your trip icon';
+    html += '<div class="install-done">' + _what + ' will appear on your home screen — tap it anytime, just like a real app.<\/div>';
   }
 
   container.innerHTML = html;
